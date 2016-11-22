@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="shopnowapp" ng-controller="AppCtrl">
+  <head>
+    <!-- social media tags -->
+    <? if(locals.facebook_id) { ?>
+    <!-- personalized -->
+    <title><?= locals.name ?> + ShopNow - Never miss great offers and product updates</title>
+    <meta property="og:title" content="<?= locals.name ?> - Subscribe to our profile on ShopNow" />
+    <meta property="og:description" content="Never miss great offers and products updates from <?= locals.name ?>">
+    <meta property="og:url" content="https://shopnowapp.com/add/<?= locals.username ?>" />
+    <meta property="og:image" content="https://shopnowapp.com/assets/img/banners/banner_brand.jpg" />
+    <? } else { ?>
+    <title>ShopNow - Never miss great offers and product updates from the brands you love</title>
+    <meta property="og:title" content="Do not miss great deals. Download ShopNow today!" />
+    <meta property="og:description" content="Never miss great offers and product updates from the brands you love">
+    <meta property="og:url" content="https://shopnowapp.com" />
+    <meta property="og:image" content="https://shopnowapp.com/assets/img/banners/banner_general.jpg" />
+    <? } ?>
+    <meta property="fb:app_id" content="<%= config.FACEBOOK_CLIENTID %>"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <!-- OPENTAGS -->
+
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="/<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="/<%= file %>"></script><% }); %>
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript">
+        window.FACEBOOK_CLIENTID = '<%= config.FACEBOOK_CLIENTID %>';
+        window.HOST = '<%= config.HOST %>';
+        window.API_URL = '<%= config.HOST %><%= config.API_ENDPOINT %>';
+        <? if(locals.facebook_id) { ?>
+        window.FACEBOOK_ID = '<?= locals.facebook_id ?>';
+        window.BRAND = <?- JSON.stringify(locals) ?>;
+        <? } ?>
+    </script>
+    
+    <div id="fb-root"></div>
+    <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '<%= config.FACEBOOK_CLIENTID %>',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-73411020-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '498371593680953');
+      fbq('track', "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=912851405498573&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <script type="text/javascript">(function () { var e = document.createElement('script'); e.type = 'text/javascript'; e.async = true; e.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://btn.createsend1.com/js/sb.min.js?v=3'; e.className = 'createsend-script'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(e, s); })();</script>		        
+  </head>	
+  <body ng-class="{'manage': isManageView}" flow-prevent-drop>
+    <div class="container-fluid p0" ui-view="main"></div>
+    <div class="img-msg affix visible-xs" ng-show="!openChat" ng-click="gotoMessenger()">
+      <span class="popover-msg above">Tap to chat with us</span>
+      <img src="/assets/img/fb-messenger-icon.png" width="60"/>
+    </div>
+    <div class="img-msg affix hidden-xs" ng-show="!openChat" ng-click="toggleChat()">
+      <span class="popover-msg above">Tap to chat with us</span>
+      <img src="/assets/img/fb-messenger-icon.png" width="60"/>
+    </div>
+		<div id="fb-chat" class="cursored affix" style="" ng-show="openChat">
+			<div class="clearfix cursored bg-blue p10" ng-click="toggleChat()">
+				<i class="fa fa-times"></i> Close
+			</div>
+			<div class="fb-page" data-href="https://www.facebook.com/getshopnow/" data-tabs="messages" data-width="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/getshopnow/"><a href="https://www.facebook.com/getshopnow/">ShopNow</a></blockquote></div></div>
+		</div>
+	</body>
+</html>

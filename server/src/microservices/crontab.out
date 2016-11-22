@@ -1,0 +1,3 @@
+# crontab config
+* * * * * /bin/sh /opt/shopnowapp/server/src/microservices/scripts/run_service.sh service_register_users
+*/5 * * * * /bin/sh /opt/shopnowapp/server/src/microservices/scripts/run_service.sh service_facebook_auto_offers

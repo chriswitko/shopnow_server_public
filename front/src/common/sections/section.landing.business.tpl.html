@@ -1,0 +1,66 @@
+<div class="container container-fixed-width" style="position:relative;overflow:hidden;">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4 ac">
+      <div class="clearfix mt50"></div>
+      <div class="clearfix mt20"></div>
+      <a target="_top" href="/">
+        <img ng-src="/assets/img/logo_200x200_blank.png" width="80" class="img-rounded"/>
+      </a>
+      <div class="clearfix mt20"></div>
+      <div class="clearfix mt20"></div>
+      <h2 class="slim">
+        Grow your business by rewarding your audience
+      </h2>
+      <h4 style="line-height:22px;font-weight:400;" class="color-dark-accent">and increase efficiency of your communication with your customers</h4>
+
+      <div class="clearfix mt30">
+        <a href ng-click="login()" class="button button--cta js-bounce">Continue with Facebook</a>
+        <p class="small mt10">Facebook profile is required</p>
+      </div>
+
+      <div class="clearfix mt10">
+        <ul class="list-unstyled list-inline" ng-if="links.length">
+          <li ng-repeat="link in links track by $index"><a href ng-click="gotoAnchor(link.anchor)">{{link.title}}</a></li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-4 visible-lg visible-md">
+      <div class="row ac">
+        <img ng-src="{{previewImage}}" class="img-responsive mw300 irc"/>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-4">
+      <div class="clearfix mt20"></div>
+      <div class="clearfix mt20"></div>
+      <div class="clearfix mt20"></div>
+      <div class="row">
+        <div class="col-xs-12 col-md-4 col-lg-12">
+          <h1 class="slim m0">
+            <strong>Create</strong> Your Storefront
+          </h1>
+          <p>Showcase your products and experiences through messaging.</p>
+          <p class="mt20 mb20 visible-lg visible-xs"><hr class="nice"/></p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-12">
+          <h1 class="slim m0">
+            <strong>Deliver</strong> Great Service
+          </h1>
+          <p>Provide personalized recommendations and expert advice.</p>
+          <p class="mt20 mb20 visible-lg visible-xs"><hr class="nice"/></p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-12">
+          <h1 class="slim m0">
+            <strong>Know</strong> Your Customers
+          </h1>
+          <p>Better understand your customers and their individual taste preferences.</p>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-12">
+          <div class="clearfix mt20"></div>
+          <h4 style="line-height:22px;font-weight:400;" class="slim">Read more in <a target="_top" href="/help#for-business">Frequently Asked Questions</a> or <a target="_blank" href="https://m.me/getshopnow">contact us</a></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

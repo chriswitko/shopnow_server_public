@@ -1,0 +1,208 @@
+.pricing {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0px 0 0;
+}
+
+.pricing .tier {
+    -webkit-flex: 1 0 210px;
+    -ms-flex: 1 0 210px;
+    flex: 1 0 210px;
+    padding: 38px 8px 45px;
+    margin: 0 -1px 39px 0;
+    border: 1px solid #e6ebf2;
+    position: relative;
+    background: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+    text-align: center;
+    transition: .2s all;
+}
+
+.pricing .tier:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.pricing .tier:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.pricing .tier:hover {
+    padding: 45px 8px 52px;
+    margin: -7px -1px 32px 0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing .tier.growth {
+    padding: 53px 8px 60px;
+    margin: -15px -1px 22px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+}
+
+.pricing .tier.growth:hover {
+    padding: 60px 15px 67px;
+    margin: -22px -1px 15px 0;
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.pricing .tier.indie h3 {
+    color: #4c8fff;
+}
+
+.pricing .tier.growth h3 {
+    color: #1ed176;
+}
+
+.pricing .tier.enterprise h3 {
+    color: #f8556c;
+}
+
+.pricing .tier h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #aab3c0;
+    text-transform: uppercase;
+}
+
+.pricing .tier h3 + a.btn {
+    margin-top: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.pricing .tier h2 {
+    margin-top: 16px;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+}
+
+.pricing .tier h2.text {
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    letter-spacing: 2.5px;
+    margin-bottom: 12px;
+}
+
+.pricing .tier h2 sup {
+    font-weight: 600;
+    font-size: 19px;
+    top: -8px;
+}
+
+.pricing .tier h2 sub {
+    font-weight: 600;
+    font-size: 17px;
+    bottom: 0;
+    right: 3px;
+}
+
+.pricing .tier h4 {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-top: -8px;
+    margin-bottom: 31px;
+    letter-spacing: 1px;
+}
+
+.pricing .tier ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.pricing .tier li,
+.pricing .tier p {
+    margin: 0 auto;
+    padding-bottom: 14px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.pricing .tier li span,
+.pricing .tier p span {
+    font-weight: 500;
+    color: #858c94;
+}
+
+.pricing .tier li strong,
+.pricing .tier p strong {
+    margin-right: 4px;
+}
+
+.pricing .tier li i,
+.pricing .tier p i {
+    color: #dbe2ec;
+    font-size: 14px;
+    position: relative;
+    top: 1px;
+}
+
+.pricing .tier .btn {
+    font-weight: 600;
+    letter-spacing: 0;
+    border-radius: 3px;
+    margin: 12px auto 0;
+    text-transform: none;
+    padding: 12px 20px 10px;
+}
+
+.section__label {
+  font-size: 4em;
+  letter-spacing: -2px;
+  line-height: 1.11111em;
+  font-weight: 700;
+  display: block;
+}
+
+.highlighted {
+  color: #fcc100!important;
+  margin-bottom: 0;
+}
+
+.section__title {
+  margin-bottom: 0.55556em;
+  font-size: 4em;
+  letter-spacing: -2px;
+  line-height: 1.111111111em;
+  color: #222222;
+  clear: both;
+  line-height: 1;
+  font-weight: 700;
+  margin-top: 0;
+  text-rendering: optimizeLegibility;
+}
+
+.section__text {
+  margin-bottom: 1.94444em;
+  font-size: 1.05556em;
+  margin: 0 0 1.3em;
+  max-width: 35.555555556em;
+  word-wrap: break-word;
+  color: #444;
+}
+
+.button--cta, .button--cta:visited {
+  background-color: @color-facebook;
+  color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+  padding: 1em 1.666666667em;
+  display: inline-block;
+  font-weight: 600;
+  border-radius: 30px;
+  margin-top: 1em;
+  vertical-align: middle;
+}

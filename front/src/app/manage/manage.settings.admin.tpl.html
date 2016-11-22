@@ -1,0 +1,41 @@
+<div ng-include="'manage/manage.nav.tpl.html'"></div>
+
+<form enctype="multipart/form-data">
+  <div class="row mb20">
+    <div class="col-lg-12">
+      <div class="clearfix bg-white-box mb20">
+        <div class="clearfix bg-white-caption">
+          <p class="strong mb0">Admin</p>
+        </div>
+        <div class="clearfix bg-white-content mb20 pb0">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label class="checkbox">
+                  <input type="checkbox" value="1" ng-model="page.is_enabled" ng-value="1"> This page is {{page.is_enabled ? 'enabled' : 'disabled'}}
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="checkbox">
+                  <input type="checkbox" value="1" ng-model="page.is_verified" ng-value="1"> This page is {{page.is_enabled ? 'verified' : 'verified'}}
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Plan</label>
+                <select class="form-control" ng-model="page.plan">
+                  <option value="basic">Basic</option>
+                  <option value="free">Free</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="clearfix form-actions ac">
+        <a href ng-click="updatePageSettings()" btn-loading="isUpdating" loading-text="Please wait..." reset-text="Save Changes" class="btn btn-lg btn-accent">Save Changes</a>
+        <a target="_top" href ng-click="goBack(page, 'settings')" class="btn btn-lg btn-active">Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>

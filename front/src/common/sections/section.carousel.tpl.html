@@ -1,0 +1,28 @@
+<div id="anchor_why" class="container container-padded pt20">
+  <div class="row">
+    
+    <div class="col-xs-12 ac">
+      <h1 ng-if="title.length">{{title}}</h1>
+      <p class="color-dark-accent" ng-if="subtitle.length">{{subtitle}}</p>
+    </div>
+
+    <div class="col-xs-12 mt50">
+      <div class="row">
+        <div class="col-xs-3">
+          <img class="img-responsive" ng-src="{{slide.image}}"/>
+        </div>
+        
+        <div class="col-xs-9">
+          <div style="padding: 50px">
+            <h1>{{slide.title}}</h1>
+            <p class="carousel-p">{{slide.desc}}</p>
+            <div class="slide-nav mt20">
+              <a style="margin-right:5px;" href ng-click="gotoNextSlider($index)" ng-repeat="slide in slides track by $index"><i ng-class="{'color-dark-accent': $index !== currentSlide}" class="fa fa-circle"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,6 @@
+{
+  "API_ENDPOINT": "/v1/api",
+  "HOST": "http://localhost:5000",
+  "FACEBOOK_CLIENTID": "",
+  "FACEBOOK_SECRET": ""
+}

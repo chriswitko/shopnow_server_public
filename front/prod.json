@@ -1,0 +1,17 @@
+[
+{
+  "name"      : "PROD_SN_FRONT",
+  "script"    : "./app.js",
+  "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+  "instances" : 4,
+  "exec_mode"  : "cluster_mode",
+  "max_memory_restart": "256M",
+  "error_file": "logs/prod_error.log",
+  "out_file": "logs/prod_output.log",
+  "merge_logs": true,
+  "env" : {
+    "NODE_ENV": "production",
+    "PORT": "3500"
+  }
+}
+]

@@ -1,0 +1,64 @@
+<div ng-include="'admin/admin.nav.tpl.html'"></div>
+
+<div class="row mb20">
+  <div class="col-lg-12">
+    <div class="clearfix bg-white-box">
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Offers</p>
+      </div>
+      <div class="clearfix bg-white-content mb20 pb0">
+        <div class="row" ng-if="!offers.length">
+          <div class="col-lg-12">
+              No offers.
+          </div>
+        </div>
+        <div class="row" ng-if="offers.length">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Enter phrase to search..." ng-keyup="getOffers()" ng-model="search.q">
+              </div>
+            </div>
+
+            <table class="table table-clean mb0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th class="ar" width="150">Expired at</th>
+                  <th class="ar" width="80">Sent</th>
+                  <th class="ar" width="80">Opens</th>
+                  <th class="ar" width="80">Clicks</th>
+                  <th width="30"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="offer in offers track by $index">
+                  <td class="val">
+                    {{offer.title}}
+                    <p class="small mb0">Auto: {{offer.is_auto ? 'Yes': 'No'}}<span ng-if="offer.badge"> &middot; <span style="color:{{offer.badge_color}}!important">{{offer.badge}}</span></p>
+                  </td>
+                  <td class="val ar">{{offer.expired_at | tz:'Europe/London':'DD/MM/YYYY HH:mm'}}</td>
+                  <td class="val ar">{{offer.counters.delivers}}</td>
+                  <td class="val ar">{{offer.counters.views}}</td>
+                  <td class="val ar">{{offer.counters.clicks}}</td>
+                  <td class="val">
+                    <div dropdown class="dropdown">
+                      <button href dropdown-toggle class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></button>
+                      <ul dropdown-menu class="dropdown-menu pull-right">
+                        <li><a ng-click="tagThisOffer(offer)">Tag this offer</a></li> 
+                        <li><a href="/manage/{{offer.page_id}}?token={{token}}" target="_top">Go to Store</a></li> 
+                        <li><a href ng-click="openApi('/offer/' + offer._id + '?access_token=' + app_token)" target="_blank">API Endpoint</a></li> 
+                        <li ng-if="offer.post_id"><a href="https://facebook.com/{{offer.post_id}}" target="_blank">Facebook Post Preview</a></li> 
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

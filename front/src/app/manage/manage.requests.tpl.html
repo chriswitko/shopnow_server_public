@@ -1,0 +1,56 @@
+<div ng-include="'manage/manage.nav.tpl.html'"></div>
+
+<div class="row mb20">
+  <div class="col-lg-12">
+    <div class="clearfix bg-white-box">
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Subscribers Requests</p>
+      </div>
+      <div class="clearfix bg-white-content mb20 pb0">
+        <div class="row" ng-if="!requests.length">
+          <div class="col-lg-12">
+              No requests.
+          </div>
+        </div>
+        <div class="row" ng-if="requests.length">
+          <div class="col-lg-12">
+            <table class="table table-clean no-body mb0">
+              <tr ng-repeat="subscriber in requests track by $index">
+                <td class="val" width="60"><img class="img-rounded" ng-src="{{subscriber.picture}}" width="50"></td>
+                <td class="val" width="100%">{{subscriber.first_name}} {{subscriber.last_name}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Don't leave your subscribers hanging, <a target="_top" href="/manage/{{page.facebook_id}}/offers/create?category=standard_offer&token={{token}}">create new offer</a> now...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb20" ng-if="page.plan === 'free'">
+  <div class="col-lg-12">
+    <div class="clearfix bg-white-box mb20">
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Upgrade</p>
+      </div>
+      <div class="clearfix bg-white-content mb20 pb0">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4>Don't leave your subscribers hanging...</h4>
+            <div class="form-group">
+              <ul>
+                <li ng-if="page.plan === 'free'">
+                  <a href ng-click="goBack(page, 'upgrade')">Upgrade to reward subscribers</a>
+                  <p>You can send offers to subscribers who request a discount (it's also a great chance to personalize your offers more)</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

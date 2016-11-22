@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h3 class="modal-title">Add New Store</h3>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label>Search Facebook</label>
+    <input type="text" class="form-control" placeholder="" ng-keyup="searchFacebook()" ng-model="newPage.q">
+  </div>
+  <div class="clearfix" ng-if="search_results.length">
+    <p>Found results</p>
+    <table class="table table-clean mb0">
+      <tr ng-repeat="page in search_results track by $index">
+        <td class="vam"><img class="avatar-size img-circle" ng-src="https://graph.facebook.com/{{page.id}}/picture?type=square"/></td>
+        <td class="vam" nowrap width="100%"><h4 class="mb0"><a href="https://facebook.com/profile.php?id={{page.id}}" target="_blank">{{page.name}}</a></h4><p class="small">{{page.category}}</p></td>
+        <td class="vam" nowrap><a target="_top" href="/manage/{{page.id}}?token={{token}}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+   <!--<button class="btn btn-primary" type="button" ng-click="createNewPage()">Create</button> -->
+  <button class="btn btn-default" type="button" ng-click="cancel()">Close</button>
+</div>

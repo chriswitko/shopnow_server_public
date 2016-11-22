@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="ac mb20"><strong>ShopNow - Admin</strong></h3>
+    <div class="clearfix mb20 ac">
+      <div class="pills">
+        <ul class="nav nav-pills pull-left">
+          <li class="nav-item" ng-class="{active: tabName === ''}">
+            <a target="_top" href="/admin?token={{token}}" class="nav-link nav-pill">Summary</a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'subscribers'}">
+            <a target="_top" href="/admin/subscribers?token={{token}}" class="nav-link nav-pill">Subscribers<span ng-if="app.insights.subscribers"> ({{app.insights.subscribers}})</span></a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'stores'}">
+            <a target="_top" href="/admin/stores?token={{token}}" class="nav-link nav-pill">Stores<span ng-if="app.insights.stores"> ({{app.insights.stores}})</span></a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'offers'}">
+            <a target="_top" href="/admin/offers?token={{token}}" class="nav-link nav-pill">Offers<span ng-if="app.insights.offers"> ({{app.insights.offers}})</span></a>
+          </li>
+        </ul>
+        <ul class="nav nav-pills pull-right">
+          <li class="nav-item" ng-class="{active: tabName === ''}">
+            <a target="_top" href ng-click="addNewStore()" class="nav-link nav-pill nav-pill-success"><i class="fa fa-plus"></i> Add New Store</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

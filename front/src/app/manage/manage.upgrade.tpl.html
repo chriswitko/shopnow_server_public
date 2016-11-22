@@ -1,0 +1,53 @@
+<div ng-include="'manage/manage.nav.tpl.html'"></div>
+
+<div class="row ac">
+  <h4 class="strong" ng-if="page.plan === 'free'">Your package: ShopNow For Free – £0/month</h4>
+  <h4 class="strong" ng-if="page.plan === 'basic'">Your package: ShopNow Basic – £19/month</h4>
+  <h1 ng-if="page.plan === 'free'">Let's upgrade + do more</h1>
+  <h3 ng-if="page.plan === 'free'">You're currently on the one <span class="txt--highlight">ShopNow For Free</span> package</h3>
+  <h3 ng-if="page.plan === 'basic'">You're currently on the one <span class="txt--highlight">ShopNow Basic</span> package</h3>
+  <h4 ng-if="page.plan === 'free'" class="unbold">Ready to upgrade? Yup! Excellent! Just pick a package below.</h4>
+  <h4 ng-if="page.plan === 'basic'" class="unbold">Looking for our free plan? Just click button below.</h4>
+</div>
+
+<div class="row ac mt50 mb20" ng-if="page.plan === 'free'">
+  <div class="col-lg-4 col-lg-push-2">
+    <div class="clearfix bg-white-box mb20">
+      <div class="clearfix bg-white-content" style="min-height:350px;">
+        <h2>Free</h2>
+        <p>Unlimited Subscribers, 1 campaign</p> 
+        <hr/>
+        <a href disabled class="btn btn-lg btn-block btn-default">Your package</a>
+        <hr/>
+        <h4>£0/month</h4>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-lg-push-2">
+    <div class="clearfix bg-white-box mb20">
+      <div class="clearfix bg-white-content" style="min-height:350px;">
+        <h2>Basic</h2>
+        <p>Unlimited Subscribers, Unlimited campaigns, Respond to customer requests, Moments, Targeting, Basic Statistics, E-mail database</p> 
+        <hr/>
+        <h4>£19/month: all-inclusive fixed price, no per-user charges or fees</h4>
+      </div>
+    </div>
+    <a href ng-click="upgradePlan(page, 'basic')" class="btn btn-lg btn-block btn-accent">Choose this package</a>
+  </div>
+</div>
+
+<div class="row ac mt50 mb20" ng-if="page.plan !== 'free'">
+  <div class="col-lg-4 col-lg-push-4">
+    <div class="clearfix bg-white-box mb20">
+      <div class="clearfix bg-white-content" style="min-height:250px;">
+        <h2>Free</h2>
+        <p>Unlimited Subscribers, 1 campaign</p> 
+        <hr/>
+        <h4>£0/month</h4>
+      </div>
+    </div>
+    <a href ng-click="cancelPlan(page)" class="btn btn-lg btn-block btn-accent">Choose this package</a>
+  </div>
+</div>
+
+<p class="small"><small class="color-dark-accent">Additional VAT charges are added to purchases made by customers from the European Union, except for customers from the European Union, but outside of United Kingdom, who provide a valid VAT ID. Businesses from outside the European Union are not charged with VAT.</small></p>

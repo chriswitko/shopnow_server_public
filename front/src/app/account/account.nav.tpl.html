@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="ac mb20"><strong>Account</strong></h3>
+    <div class="clearfix mb20 ac">
+      <div class="pills">
+        <ul class="nav nav-pills">
+          <li class="nav-item" ng-class="{active: tabName === ''}">
+            <a target="_top" href="/account?token={{token}}" class="nav-link nav-pill">Personal Information</a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'billing'}">
+            <a target="_top" href="/account/billing?token={{token}}" class="nav-link nav-pill">Billing Information</a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'invoices'}">
+            <a target="_top" href="/account/invoices?token={{token}}" class="nav-link nav-pill">Subscriptions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

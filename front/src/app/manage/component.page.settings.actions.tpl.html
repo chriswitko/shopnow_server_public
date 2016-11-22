@@ -1,0 +1,39 @@
+<form enctype="multipart/form-data">
+  <div class="row mb20">
+    <div class="col-lg-12">
+      <div class="clearfix bg-white-box">
+        <div class="clearfix bg-white-caption">
+          <p class="strong mb0">Page Owners</p>
+        </div>
+        <div class="clearfix bg-white-content mb20 pb0">
+          <div class="row">
+            <div class="col-lg-12">
+              <h4>Because you're an account owner, you can…</h4>
+              <div class="form-group">
+                <ul>
+                  <li>
+                    <a href ng-click="goBack(page, 'settings/basic')">Edit basic informations about your store</a>
+                    <p></p>
+                  </li>
+                  <li>
+                    <a href ng-click="goBack(page, 'upgrade')">Upgrade or downgrade your package</a>
+                    <p class="strong" ng-if="page.plan === 'free'">Your package: ShopNow For Free – £0/month</p>
+                    <p class="strong" ng-if="page.plan === 'basic'">Your package: ShopNow Basic – £19/month</p>
+                  </li>
+                  <li>
+                    <a href ng-click="share()">Share posts on Facebook</a>
+                    <p>Invite your customers and fans to download the app</p>
+                  </li>
+                  <li>
+                    <a href ng-click="">Download ShopNow for iOS</a>
+                    <p></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

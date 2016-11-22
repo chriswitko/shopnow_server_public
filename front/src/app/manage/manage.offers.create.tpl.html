@@ -1,0 +1,148 @@
+<div ng-include="'manage/manage.nav.tpl.html'"></div>
+
+<form enctype="multipart/form-data">
+  <div class="row mb20">
+    <div class="col-lg-12">
+      <div class="clearfix bg-white-box mb20">
+        <div class="clearfix bg-white-caption" ng-if="offer.category === 'standard_offer'">
+          <p class="strong mb0">New Offer</p>
+          <p class="small color-inactive-light mb0">Send new offers to all your subscribers.</p>
+        </div>
+        <div class="clearfix bg-white-caption" ng-if="offer.category === 'welcome_moment'">
+          <p class="strong mb0">Welcome Moment</p>
+          <p class="small color-inactive-light mb0">Welcome your subscribers with something special. Everyone loves a good discount or an offer worth checking out :)</p>
+        </div>
+        <div class="clearfix bg-white-caption" ng-if="offer.category === 'birthday_moment'">
+          <p class="strong mb0">Birthday Moment</p>
+          <p class="small color-inactive-light mb0">Surprise your subscribers on their special day with a special discount.</p>
+        </div>
+        <div class="clearfix bg-white-content mb20 pb0">
+          <div class="row">
+            <div class="col-lg-12" ng-if="page.plan === 'free'">
+              <div class="clearfix alert alert-info mb20">
+                Note: You're currently using ShopNow's Free package. Sending offers to subscribers is not included in this package. To unlock this options <a href ng-click="goBack(page, 'upgrade')">Upgrade to the Basic plan</a>.  
+              </div>
+            </div>
+            <div class="col-lg-12" ng-if="editMode === 'edit' && offer.category !== 'standard_offer' && offer.status === 'paid' && offer.is_enabled === true">
+              <div class="clearfix alert alert-info mb20">
+                Note: This offer is live now. All modifications will apply only to new subscribers. You can always disable delivering for this offer by changing settings below.  
+              </div>
+            </div>
+            <div class="col-lg-12" ng-if="editMode === 'edit' && offer.category !== 'standard_offer' && offer.status === 'paid' && offer.is_enabled === false">
+              <div class="clearfix alert alert-info mb20">
+                Note: You have disabled delivering for this offer. To enable it, please change settings below.  
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div id="iphone6" class="phone rose">
+                <div class="top-group"></div>
+                <div class="left-group"></div>
+                <div class="right-group"></div>
+                <div class="top-accents"></div>
+                <div class="bottom-accents"></div>
+                <div class="screen">
+                  <div class="screen-wrap p10">
+                    <p class="color-inactive-light"><small>Promoted &middot; <i class="fa fa-clock-o"></i> Ends in {{offer.valid_days === 1 ? 'a day' : offer.valid_days + ' days'}}</small></p>
+                    <p>{{(offer.message || 'Your message here')}}<span ng-if="offer.redemption_code.length"> Use this code: <span class="txt--highlight">{{offer.redemption_code}}</span></span><span class="color-facebook-accent" ng-if="offer.link"> {{offer.link}}</span></p>
+                    <div class="relative" flow-init="{target: '/upload'}" flow-file-success="updatePicture($file, $message, $flow)" flow-files-submitted="isUploading=true;$flow.upload()" flow-files-added="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                      <div square-el flow-btn flow-attrs="{accept:'image/*'}" class="img-preview-area" flow-drop flow-drag-enter="style={border:'1px solid #FF4081'}" flow-drag-leave="style={};" ng-style="style">
+                        <img ng-src="{{offer.picture}}" flow-img="$flow.files[$flow.files.length - 1]" flow-btn class="img-responsive" width="100%"/>
+                        <div class="image-tip">
+                          <span ng-if="!offer.picture && !isUploading" class="btn btn-block" flow-btn flow-attrs="{accept:'image/*'}">Click or drag image here</span>
+                          <p ng-if="!offer.picture && !isUploading" class="ac small color-inactive-light">Only PNG,GIF,JPG files allowed.<br/>Square format, min. 640x640px</p>
+                        </div>
+                      </div>
+                    </div>
+                    <p><a href class="mt10 btn btn-block btn-success"><i class="fa fa-shopping-cart"></i> Shop Now</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-group" ng-if="editMode === 'edit' && offer.category !== 'standard_offer'">
+                <label class="checkbox">
+                  <input type="checkbox" value="1" ng-model="offer.is_enabled" ng-value="1"> This offer is {{offer.is_enabled ? 'enabled' : 'disabled'}}
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Name this offer</label>
+                <p class="small">The offer name is shown in your reports and offer archives.</p>
+                <input type="text" class="form-control" placeholder="Name your offer (internal use only)" ng-model="offer.title">
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea class="form-control" placeholder="Enter message" ng-model="offer.message"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Link</label>
+                <input type="url" class="form-control" placeholder="eg. https://mystore.com/sale" ng-model="offer.link">
+              </div>
+              <div class="form-group">
+                <label>Redemption Code</label>
+                <input type="text" class="form-control" placeholder="eg. SHOPNOW20" ng-model="offer.redemption_code">
+              </div>
+              <div class="form-group" ng-if="offer.category === 'standard_offer'">
+                <label>Offer valid for</label>
+                <div class="clearfix" style="padding-left: 20px;">
+                  <label class="radio-inline">
+                    <input type="radio" readonly="editMode === 'edit'" name="valid_days" value="1" ng-model="offer.valid_days" ng-value="1"> 1 day (next 24 hours)
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" readonly="editMode === 'edit'" name="valid_days" value="3" ng-model="offer.valid_days"> 3 days
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" readonly="editMode === 'edit'" name="valid_days" value="7" ng-model="offer.valid_days"> 7 days
+                  </label>
+                  <div class="clearfix mt10">
+                    <label class="radio-inline">
+                      <input type="radio" readonly="editMode === 'edit'" name="valid_days" value="14" ng-model="offer.valid_days"> 14 days
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" readonly="editMode === 'edit'" name="valid_days" value="30" ng-model="offer.valid_days"> 30 days
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" ng-if="offer.category === 'standard_offer'">
+                <label>Deliver to</label>
+                <div class="clearfix" style="padding-left: 20px;" ng-if="page.counters.requests">
+                  <label class="radio">
+                    <input type="radio" ng-disabled="editMode === 'edit' || page.plan === 'free' || !page.counters.requests" name="targeting_mode" value="requests_only" ng-model="offer.targeting.mode" ng-change="updateTargeting()"> Subscribers who asked for discount only<span ng-if="page.counters.requests">  (~{{page.counters.requests}} subscribers)</span><span ng-if="page.plan === 'free'">(<a href ng-clikc="goBack(page, 'upgrade')">Upgrade to unlock</a>)</span>
+                  </label>
+                </div>
+                <div class="clearfix" style="padding-left: 20px;">
+                  <label class="radio">
+                    <input type="radio" readonly="editMode === 'edit'" name="targeting_mode" value="custom" ng-model="offer.targeting.mode" ng-change="updateTargeting()"> Custom group of subscribers
+                  </label>
+                  <div class="clearfix" style="padding-left: 20px;">
+                    <label class="radio-inline">
+                      <input type="radio" ng-disabled="editMode === 'edit' || offer.targeting.mode !== 'custom'" name="gender" value="all" ng-model="helper.gender" ng-change="updateGender()"> All
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" ng-disabled="editMode === 'edit' || offer.targeting.mode !== 'custom'" name="gender" value="female" ng-model="helper.gender" ng-change="updateGender()"> Women
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" ng-disabled="editMode === 'edit' || offer.targeting.mode !== 'custom'" name="gender" value="male" ng-model="helper.gender" ng-change="updateGender()"> Men
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" ng-if="offer.category !== 'standard_offer'">
+                <p class="mb0" ng-if="offer.category === 'welcome_moment'"><label><i class="fa fa-check"></i> Offer valid for <u>3 days</u> from the moment of delivery</label></p>
+                <p class="mb0" ng-if="offer.category === 'welcome_moment'"><label><i class="fa fa-check"></i> Targeted to <u>All</u> subscribers only once</label></p>
+                <p class="mb0" ng-if="offer.category === 'birthday_moment'"><label><i class="fa fa-check"></i> Offer valid for <u>1 day</u> from the moment of delivery</label></p>
+                <p class="mb0" ng-if="offer.category === 'birthday_moment'"><label><i class="fa fa-check"></i> Targeted to <u>All</u> subscribers every year on birthday</label></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="clearfix form-actions ac">
+        <a ng-if="page.plan === 'free'" href ng-click="goBack(page, 'upgrade')" btn-loading="isSending" loading-text="Please wait..." reset-text="{{ editMode === 'edit' ? 'Save Changes' : 'Send Now' }}" class="btn btn-lg btn-accent">{{ editMode === 'edit' ? 'Save Changes' : 'Upgrade and Send' }}</a>
+        <a ng-if="page.plan !== 'free'" href ng-click="sendOffer()" btn-loading="isSending" loading-text="Please wait..." reset-text="{{ editMode === 'edit' ? 'Save Changes' : 'Send Now' }}" class="btn btn-lg btn-accent">{{ editMode === 'edit' ? 'Save Changes' : 'Send Now' }}</a>
+        <a target="_top" href ng-click="goBack(page, 'offers')" class="btn btn-lg btn-active">Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+{
+  "API_ENDPOINT": "/v1/api",
+  "HOST": "https://api.shopnowapp.com",
+  "FACEBOOK_CLIENTID": "",
+  "FACEBOOK_SECRET": ""
+}

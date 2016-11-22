@@ -1,0 +1,48 @@
+<div ng-include="'admin/admin.nav.tpl.html'"></div>
+
+<div class="row">
+  <div class="col-lg-3">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack('subscribers')">
+      <h1>{{app.insights.subscribers || '&mdash;'}}</h1>
+      <p class="color-text">Subscribers</a>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack('stores')">
+      <h1>{{app.insights.stores || '&mdash;'}}</h1>
+      <p class="color-text">Stores</a>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack('offers')">
+      <h1>{{app.insights.requests || '&mdash;'}}</h1>
+      <p class="color-text">Requests</a>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack('offers')">
+      <h1>{{app.insights.offers || '&mdash;'}}</h1>
+      <p class="color-text">Offers</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="clearfix bg-white-box mb20">
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Stores recently added</p>
+      </div>
+      <div class="clearfix bg-white-content mb20 pb0">
+        <div class="clearfix">
+          <table class="table table-clean mb0">
+            <tr ng-repeat="page in pages track by $index">
+              <td class="vam"><img class="avatar-size img-circle" ng-src="https://graph.facebook.com/{{page.facebook_id}}/picture?type=square"/></td>
+              <td class="vam" nowrap width="100%"><h4 class="mb0"><a href="https://facebook.com/profile.php?id={{page.facebook_id}}" target="_blank">{{page.name}}</a></h4><p class="small">{{page.category}}</p></td>
+              <td class="vam" nowrap><a target="_top" href="/manage/{{page.facebook_id}}?token={{token}}" class="btn btn-primary">Go to Dashboard</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

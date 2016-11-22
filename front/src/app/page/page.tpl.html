@@ -1,0 +1,35 @@
+<div class="container container-fixed-width mt50" style="position:relative;overflow:hidden;">
+  <div class="row ac">
+    <div class="col-xs-12 col-md-6 col-lg-4 col-lg-push-2">
+      <div class="clearfix mt50"></div>
+      <div class="clearfix mt20"></div>
+      <a target="_top" href="/ios" target="_top">
+        <img ng-src="https://graph.facebook.com/{{page.facebook_id}}/picture?type=square&width=200&height=200" width="150" class="img-circle" ng-if="page"/>
+        <img ng-src="/assets/img/logo_200x200_blank.png" width="80" class="img-rounded" ng-if="!page"/>
+      </a>
+      <p class="mb0 small strong mt10" ng-if="!page">ShopNow</p>
+      <p class="mb0 small strong mt10" ng-if="page">{{page.name}} on ShopNow</p>
+      <div class="clearfix mt20"></div>
+      <div class="clearfix mt20"></div>
+      <h2 class="slim" ng-if="!page">Never miss great offers & products updates from brands you like</h2>
+      <h2 class="slim" ng-if="page">Never miss great offers & products updates</h2>
+      <h4 style="line-height:22px;font-weight:400;" class="color-dark-accent">Be the first to discover new products.</h4>
+
+      <div class="clearfix mt30">
+        <a href href="/ios" target="_top"><img src="/assets/img/download-app-store.svg" height="54"/></a>
+      </div>
+
+      <div class="clearfix mt10">
+        <small>Android version will be available soon.</small>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-4 col-lg-push-2 visible-lg visible-md">
+      <div class="row ac">
+        <a href="/ios" target="_top"><img ng-src="/assets/img/mocks/brand.jpg" class="mw300 irc" style="width:327px;"/></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<global-footer class="footer"></global-footer>

@@ -1,0 +1,32 @@
+<div ng-include="'manage/manage.nav.tpl.html'"></div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack(page, 'subscribers')">
+      <h1>{{page.insights.subscribers || '&mdash;'}}</h1>
+      <p class="color-text">Subscribers</p>
+    </div>
+  </div>
+  <!--<div class="col-lg-3">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack(page, 'requests')">
+      <h1>{{page.insights.requests || '&mdash;'}}</h1>
+      <p class="color-text">New Requests</p>
+    </div>
+  </div>-->
+  <div class="col-lg-4">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack(page, 'offers')">
+      <h1>{{page.insights.delivers || '&mdash;'}}</h1>
+      <p class="color-text">Sent</p>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="clearfix bg-white-box mb20 ac cursored" ng-click="goBack(page, 'offers')">
+      <h1>{{page.insights.clicks || '&mdash;'}}</h1>
+      <p class="color-text">Clicks</p>
+    </div>
+  </div>
+</div>
+
+<div page-stats page="page"></div>
+
+<div page-settings-actions page="page"></div>

@@ -1,0 +1,16 @@
+<div class="row mb0" ng-if="!isLoading && data.length">
+  <div class="col-lg-12">
+    <div class="clearfix bg-white-box mb20">
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Views vs. Clicks</p>
+      </div>
+      <div class="clearfix bg-white-content mb20 pb0">
+        <div class="row">
+          <div class="col-lg-12">
+            <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-click="onClick"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

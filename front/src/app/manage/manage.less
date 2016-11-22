@@ -1,0 +1,245 @@
+body {
+  background: white!important;
+}
+
+body.manage {
+  background: @color-inactive!important;
+}
+
+.nav-pill {
+  border-radius: 20px!important;
+}
+
+.pills {
+  .nav-pills {
+    // margin-left:auto;
+    // margin-right:auto;
+    display:table;
+    
+    a {
+      background: white;
+    }
+    
+    li {
+      margin-right: 10px;
+    }
+    
+    li:last-child {
+      margin-right: 0;
+    }
+    
+    li.active {
+      a {
+        background: @color-primary;
+      }
+    }
+  }
+}
+
+.moment-active, .moment-active:hover {
+  color: @color-dark;
+
+  h5 {
+    color: @color-dark;
+  }
+}
+
+.moment-inactive, .moment-inactive:hover {
+  color: @color-inactive;
+
+  h5 {
+    color: @color-inactive;
+  }
+}
+
+.container-area {
+  div:nth-child(odd) {
+    .container-fluid {
+      background: @color-inactive-light;
+    }
+  } 
+  
+  div:nth-child(even) {
+    .container-fluid {
+      background: white;
+    }
+  }
+}
+
+div.section-settings h2 {
+  position: relative;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  background: url("/assets/img/settings-line.png") 0 50% repeat-x;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+div.section-settings h2 span.title {
+  color: #525961;
+  font-size: 16px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  padding-right: 10px;
+}
+
+/* line 1, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+#iphone6 {
+  height: 600px;
+  width: 295px;
+  border-radius: 42px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative; }
+  /* line 6, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6.rose {
+    background-color: #f6f8f9;
+    border: 3px solid #E6AEA6;
+    // box-shadow: 0 0 1px 2px #FFC4C4 inset, -30px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 255, 255, 0.9) inset;
+     }
+    /* line 10, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6.rose .top-group {
+      background-color: #393939;
+      border: 1px solid #ccc; }
+      /* line 13, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+      #iphone6.rose .top-group:before {
+        background-color: #353535;
+        border: 1px solid #ccc; }
+      /* line 17, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+      #iphone6.rose .top-group:after {
+        background-color: #093BBF;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3) inset; }
+    /* line 23, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6.rose .left-group, #iphone6.rose .left-group:before, #iphone6.rose .left-group:after {
+      background-color: #EF9191; }
+    /* line 26, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6.rose .right-group {
+      background-color: #EF9191;
+      box-shadow: -1px 0 0 rgba(255, 255, 255, 0.1) inset; }
+    /* line 31, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6.rose .screen:before {
+      background-color: #f9f9f9; }
+    /* line 34, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6.rose .screen:after {
+      background: #444;
+      background: linear-gradient(135deg, #885d59 0%, #F7EFED 35%, #F7EFED 65%, #885d59 100%); }
+  /* line 42, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .top-group {
+    width: 42px;
+    height: 5px;
+    border-radius: 100px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin-left: -21px; }
+    /* line 50, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .top-group:before, #iphone6 .top-group:after {
+      border-radius: 100px;
+      content: " ";
+      position: absolute; }
+    /* line 55, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .top-group:before {
+      height: 6px;
+      width: 6px;
+      top: -19px;
+      left: 50%;
+      margin-left: -4px; }
+    /* line 62, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .top-group:after {
+      height: 8px;
+      width: 8px;
+      left: -22px;
+      top: -4px; }
+  /* line 69, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .left-group, #iphone6 .left-group:before, #iphone6 .left-group:after {
+    position: absolute;
+    left: -5px;
+    border-radius: 2px 0 0 2px;
+    width: 2px;
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset; }
+  /* line 76, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .left-group {
+    top: 65px;
+    height: 21px; }
+    /* line 79, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .left-group:before, #iphone6 .left-group:after {
+      content: " ";
+      height: 35px;
+      left: 0; }
+    /* line 84, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .left-group:before {
+      top: 45px; }
+    /* line 87, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .left-group:after {
+      top: 93px; }
+  /* line 91, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .right-group {
+    top: 109px;
+    height: 35px;
+    position: absolute;
+    right: -5px;
+    border-radius: 0 2px 2px 0;
+    width: 2px; }
+  /* line 100, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .top-accents:before, #iphone6 .top-accents:after, #iphone6 .bottom-accents:before, #iphone6 .bottom-accents:after {
+    height: 11px;
+    width: 4px;
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    content: " "; }
+  /* line 107, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .top-accents:before, #iphone6 .bottom-accents:before {
+    left: -3px; }
+  /* line 110, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .top-accents:after, #iphone6 .bottom-accents:after {
+    right: -3px; }
+  /* line 115, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .top-accents:before, #iphone6 .top-accents:after {
+    top: 35px; }
+  /* line 120, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .bottom-accents:before, #iphone6 .bottom-accents:after {
+    bottom: 35px; }
+  /* line 124, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+  #iphone6 .screen {
+    height: 475px;
+    width: 269px;
+    background-color: #fff;
+    margin: 60px auto 0;
+    position: relative; }
+    /* line 130, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .screen .screen-wrap {
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      border: 1px solid #eee; }
+    /* line 136, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .screen img {
+      width: 100%;
+      height: 100%; }
+    /* line 140, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .screen:before {
+      height: 38px;
+      width: 38px;
+      border-radius: 100px;
+      content: " ";
+      position: absolute;
+      bottom: -47px;
+      left: 50%;
+      margin-left: -19px;
+      z-index: 3; }
+    /* line 151, /Users/colinkeany/personal/html/mockit-extended/source/options/rose-gold/iPhone6s-rose.scss */
+    #iphone6 .screen:after {
+      height: 42px;
+      width: 42px;
+      border-radius: 100px;
+      content: " ";
+      position: absolute;
+      bottom: -49px;
+      left: 50%;
+      margin-left: -21px; }

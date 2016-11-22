@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h3 class="modal-title">Tag this Offer</h3>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label>Enter tag title</label>
+    <input type="text" class="form-control" placeholder="15% OFF" ng-model="offer.badge">
+  </div>
+  <div class="form-group">
+    <label>Enter tag color</label>
+    <input type="text" class="form-control" style="{{offer.badge_color ? 'color:' + offer.badge_color : ''}}" placeholder="#a8a8a8" ng-model="offer.badge_color">
+    <p>
+      <ul class="list-unstyled list-inline">
+        <li><a href style="color:#42A5F5" ng-click="offer.badge_color = '#42A5F5'">#42A5F5</a></li>
+        <li><a href style="color:#424242" ng-click="offer.badge_color = '#424242'">#424242</a></li>
+        <li><a href style="color:#FF4081" ng-click="offer.badge_color = '#FF4081'">#FF4081</a></li>
+        <li><a href style="color:#F56991" ng-click="offer.badge_color = '#F56991'">#F56991</a></li>
+        <li><a href style="color:#FFC48C" ng-click="offer.badge_color = '#FFC48C'">#FFC48C</a></li>
+        <li><a href style="color:#D1F2A5" ng-click="offer.badge_color = '#D1F2A5'">#D1F2A5</a></li>
+        <li><a href style="color:#212121" ng-click="offer.badge_color = '#212121'">#212121</a></li>
+      </ul>
+    </p>
+  </div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="saveTag()">Save Tag</button> 
+  <button class="btn btn-default" type="button" ng-click="cancel()">Close</button>
+</div>

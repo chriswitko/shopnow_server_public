@@ -1,0 +1,59 @@
+backend:
+    build: ./server
+    # environment:
+    # - VIRTUAL_HOST=~^shopnowapi\..*\.xip\.io          #1
+    # ports:
+    # - "80:3000"
+    # expose:
+    # - "3000"
+    volumes: 
+    - "/Users/chris/projects/shopnowapp.com/website/server/:/opt/app"
+    # mem_limit: 2g
+    # cpu_shares: 256
+    restart: always
+    links:
+    - mongo
+# frontend:
+#     build: ./server
+#     environment:
+#     - VIRTUAL_HOST=~^studio\..*\.xip\.io          #1
+#     ports:
+#     - "80"
+#     mem_limit: 2g
+#     cpu_shares: 256
+#     restart: always
+mongo:
+    image: mongo
+    command: --smallfiles
+    volumes:
+    - /data/db:/data/db
+    ports:
+    - "27017:27017"
+    # mem_limit: 2g
+    # cpu_shares: 256
+    restart: always
+    # https://github.com/jwilder/docker-gen/releases/download/0.5.0/docker-gen-alpine-linux-amd64-0.5.0.tar.gz
+proxy:
+    # image: jwilder/nginx-proxy
+    build: ./proxy
+    environment:
+    - DOCKER_CERT_PATH=/certs                    
+    - DOCKER_HOST=$DOCKER_HOST
+    - DOCKER_TLS_VERIFY=1
+    volumes:
+    - $DOCKER_CERT_PATH:/certs                   
+    - /var/run/docker.sock:/tmp/docker.sock      
+    ports:
+    - "80:80"
+    - "443:443"
+    # mem_limit: 512m
+    # cpu_shares: 128
+    restart: always
+clean:
+  image: meltwater/docker-cleanup:latest
+  environment:
+    KEEP_IMAGES: "ubuntu:14.04 corp/important-image:tag"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+    - /var/lib/docker:/var/lib/docker:rw
+  restart: always

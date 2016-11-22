@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+var config = require('../../config/config.js');
+var async = require('async');
+var mongoose = require('mongoose')
+require('../../local_modules/cache').install(mongoose, {max:50, maxAge:1000*60*0.5});
+
+console.log('Connecting to DB: ' + config.db);
+var options = { server: { socketOptions: { keepAlive: 12000 } } };
+mongoose.connect(config.db, options);
+  
+var User = require('../../services').User;
+
+var verified = 0, unverified = 0;
+
+console.log('Start at', new Date());
+
+var stream = User.get_not_synched({}, {limit: 10, stream: true}).stream();
+
+stream
+.on('data', function (user) {
+  this.pause();
+  var self = this;
+  
+  console.log('Processing user', user.facebook_id, user.first_name, user.last_name);
+  
+  var loop = user.is_ready ? false : true;
+    
+  var tasks = [];
+  if(user.email !== user.facebook_id && user.access_token) {
+    tasks.push(user.import_likes.bind(user, {loop: loop, max: 50, skip: true}));
+  }
+  
+  tasks.push(user.mark_ready.bind(user));
+  tasks.push(user.mark_synched.bind(user))  
+    
+  async.series(tasks, function(err, result) {
+    if(err) {
+      console.log('ERR', err);
+      if(!user.access_token) {
+        user.update({$set: {has_errors: false, is_ready: true, is_synched: true}}, function() {
+          self.resume();
+        })        
+      } else {
+        user.mark_has_errors(function() {
+          self.resume();
+        });
+      }
+    } else {
+      verified += result[0].verified;
+      unverified += result[0].unverified;
+      user.mark_has_no_errors(function() {
+        self.resume();
+      });
+    }
+  })
+})
+.on('error', function (err) {
+  console.log('Error:', err)
+}).on('close', function () {
+  console.log('Done:', 'Verified', verified, 'Unverified', unverified, 'at', new Date());
+  process.exit(0)
+});
+

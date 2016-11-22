@@ -1,0 +1,60 @@
+<div ng-include="'admin/admin.nav.tpl.html'"></div>
+
+<div class="row mb20">
+  <div class="col-lg-12">
+    <div class="clearfix bg-white-box">
+      <div class="clearfix bg-white-caption">
+        <p class="strong mb0">Subscribers</p>
+      </div>
+      <div class="clearfix bg-white-content mb20 pb0">
+        <div class="row" ng-if="!subscribers.length">
+          <div class="col-lg-12">
+              No subscribers.
+          </div>
+        </div>
+        <div class="row" ng-if="subscribers.length">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Enter phrase to search..." ng-keyup="getSubscribers()" ng-model="search.q">
+              </div>
+            </div>
+
+            <table class="table table-clean mb0">
+              <thead>
+                <tr>
+                  <th colspan="2">Name</th>
+                  <th class="ar" width="150">Last update</th>
+                  <th class="ar" width="100">Subscriptions</th>
+                  <th class="ar" width="80">Offers</th>
+                  <th width="30"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="subscriber in subscribers track by $index">
+                  <td class="val" width="60"><img class="img-rounded" ng-src="{{subscriber.picture || '/assets/img/no_avatar.jpg'}}" width="50"></td>
+                  <td class="val">
+                    {{subscriber.first_name}} {{subscriber.last_name}}
+                    <p class="small mb0">ID#: <a target="_blank" href="https://facebook.com/profile.php?id={{subscriber.facebook_id}}">{{subscriber.facebook_id}}</a></p>
+                  </td>
+                  <td class="val ar">{{subscriber.updated_at | tz:'Europe/London':'DD/MM/YYYY HH:mm'}}</td>
+                  <td class="val ar">{{subscriber.insights.subscriptions}}</td>
+                  <td class="val ar">{{subscriber.subscriptions_with_offers.summary || '0'}}</td>
+                  <td class="val">
+                    <div dropdown class="dropdown">
+                      <button href dropdown-toggle class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></button>
+                      <ul dropdown-menu class="dropdown-menu pull-right">
+                        <li><a href ng-click="openApi('/user/' + subscriber.facebook_id + '?access_token=' + app_token)" target="_blank">API Endpoint</a></li> 
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

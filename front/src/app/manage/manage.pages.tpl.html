@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-lg-10 col-lg-push-1">
+    <div>
+      <h3 class="ac mb20"><strong>My Pages</strong></h3>
+      <div class="clearfix bg-white-box mb20">
+        <div class="clearfix bg-white-content" ng-if="pages.length">
+          <h4 class="strong mb0">Select page from the list below</h4>
+          <p class="small">You can only manage pages which are already active on Facebook.</p>
+          <div class="clearfix">
+            <table class="table mb0">
+              <tr ng-repeat="page in pages track by $index">
+                <td class="vam"><img class="avatar-size" ng-src="https://graph.facebook.com/{{page.id}}/picture?type=normal"/></td>
+                <td class="vam" nowrap width="100%"><h4 class="mb0"><a href="https://facebook.com/profile.php?id={{page.id}}" target="_blank">{{page.name}}</a></h4><p class="small">{{page.category}}</p></td>
+                <td class="vam" nowrap><a target="_top" href="/manage/{{page.id}}?token={{page.access_token}}" class="btn btn-primary">Go to Dashboard</a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="clearfix bg-white-content" ng-if="!pages.length">
+          <div class="clearfix">
+            <h4 class="strong">Upsss. Looks like we could not retrive information about pages you administer on Facebook.</h4>
+            <p><a target="_top" href="/manage?token={{token}}" class="btn btn-primary"><i class="fa fa-refresh"></i>&nbsp;&nbsp;Try Again</a></p>
+            <hr class="nice"/>
+            <p>If you need any help:
+              <ul>
+                <li><a target="_blank" href="/help">Check our Help section</a></li>
+                <li><a href="mailto:info@shopnowapp.com">Contact with our Support</a> (info@shopnowapp.com)</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+db:
+  image: mongo
+  net: "shopnowapp"
+  ports:
+    - "27017:27017"
+  command: "--smallfiles --logpath=/dev/null"
+# waitdb: 
+#   image: aanand/wait
+backend:
+  build: .
+  net: "shopnowapp"
+  command: nodemon -L --watch /opt/app /opt/app/app.js
+  # ports:
+    # - "3000:3000"
+  # links:
+    # - waitdb
+  volumes:
+    - ./server:/opt/app
+  environment:
+    PORT: 3000 # this is optional, allows express to use process.env.PORT instead of a raw 3000
+  restart: always
+frontend:
+  build: .
+  net: "shopnowapp"
+  command: node /opt/app/app.js
+  # ports:
+    # - "3000:3000"
+  # links:
+    # - waitdb
+  volumes:
+    - ./front:/opt/app
+  environment:
+    PORT: 3500 # this is optional, allows express to use process.env.PORT instead of a raw 3000
+  restart: always
+clean:
+  image: meltwater/docker-cleanup:latest
+  environment:
+    KEEP_IMAGES: "ubuntu:14.04 corp/important-image:tag"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+    - /var/lib/docker:/var/lib/docker:rw
+  restart: always

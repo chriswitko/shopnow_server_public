@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="ac mb20"><a target="_top" href="/manage/{{page.facebook_id}}?token={{token}}" class="color-text"><strong>{{page.name || page.username || page.facebook_id}}</strong></a></h3>
+    <div class="clearfix mb20">
+      <div class="pills">
+        <ul class="nav nav-pills pull-left">
+          <li class="nav-item" ng-class="{active: tabName === ''}">
+            <a target="_top" href="/manage/{{page.facebook_id}}?token={{token}}" class="nav-link nav-pill">Summary</a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'subscribers'}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/subscribers?token={{token}}" class="nav-link nav-pill">Subscribers<span ng-if="page.insights.subscribers"> ({{page.insights.subscribers}})</span></a>
+          </li>
+          <!--<li class="nav-item" ng-class="{active: tabName === 'requests'}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/requests?token={{token}}" class="nav-link nav-pill">Requests<span ng-if="page.insights.requests"> ({{page.insights.requests}})</span></a>
+          </li>-->
+          <li class="nav-item" ng-class="{active: tabName === 'offers'}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/offers?token={{token}}" class="nav-link nav-pill">Offers<span ng-if="page.insights.all_offers"> ({{page.insights.all_offers}})</span></a>
+          </li>
+          <li ng-if="page.plan === 'free'" class="nav-item" ng-class="{active: tabName === 'upgrade'}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/upgrade?token={{token}}" class="nav-link nav-pill">Upgrade</a>
+          </li>
+          <li class="nav-item" ng-class="{active: tabName === 'settings'}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/settings?token={{token}}" class="nav-link nav-pill">Settings</a>
+          </li>
+          <li ng-if="isAdmin" class="nav-item" ng-class="{active: tabName === 'admin'}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/admin?token={{token}}" class="nav-link nav-pill"><i class="fa fa-ellipsis-h"></i></a>
+          </li>
+        </ul>
+        <ul class="nav nav-pills pull-right">
+          <li class="nav-item" ng-class="{active: tabName === ''}">
+            <a target="_top" href="/manage/{{page.facebook_id}}/offers/create?category=standard_offer&token={{token}}" class="nav-link nav-pill nav-pill-success"><i class="fa fa-plus"></i> Create New Offer</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

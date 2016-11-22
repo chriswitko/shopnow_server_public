@@ -1,0 +1,19 @@
+[
+{
+  "name"      : "PROD_SN_REG_SERVER",
+  "script"    : "./qserver_register.users.js",
+  "node_args": ["--harmony_proxies"],
+  "args"      : "['--dev']",
+  "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+  "instances" : 4,
+  "exec_mode"  : "cluster_mode",
+  "max_memory_restart": "256M",
+  "error_file": "logs/queue_register_error.log",
+  "out_file": "logs/queue_register_output.log",
+  "merge_logs": true,
+  "env" : {
+    "NODE_ENV": "production",
+    "PORT": "3002"
+  }
+}
+]
